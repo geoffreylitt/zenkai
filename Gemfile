@@ -42,3 +42,6 @@ gem 'mechanize'
 
 gem 'gon'
 gem 'd3-rails'
+
+gem 'rails_12factor', group: :production
+gem 'thin'
