@@ -1,1 +1,41 @@
-<h1>Hello</h1>
+<h1>全開 Zenkai</h1>
+
+<button id="example-h-PreviousDomain-selector" style="margin-bottom: 10px;"><</button>
+<button id="example-h-NextDomain-selector" style="margin-bottom: 10px;">></button>
+<div id="fitness-calendar">
+</div>
+
+<script type="text/javascript">
+  window.gymVisits = window.gon.gymVisits.map(function(e){
+    return new Date(Date.parse(e));
+  });
+
+  var cal = new CalHeatMap();
+  cal.init({
+    itemSelector: "#fitness-calendar",
+    domain: "month",
+    subDomain: "x_day",
+    data: window.gon.stepsCheckins,
+    highlight: gymVisits,
+    start: new Date(2014, 10, 1),
+    cellSize: 15,
+    cellRadius: 3,
+    cellPadding: 5,
+    range: 5,
+    domainMargin: 20,
+    animationDuration: 800,
+    domainDynamicDimension: false,
+    previousSelector: "#example-h-PreviousDomain-selector",
+    nextSelector: "#example-h-NextDomain-selector",
+    label: {
+      position: "left",
+      offset: {
+        x: 20,
+        y: 35
+      },
+      width: 110
+    },
+    legend: [5000, 7500, 10000, 12500],
+    weekStartOnMonday: false
+  });
+</script>

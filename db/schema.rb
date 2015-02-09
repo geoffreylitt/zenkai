@@ -11,9 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150208234201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gym_visits", force: true do |t|
+    t.date     "date"
+    t.datetime "datetime"
+  end
+
+  create_table "steps_checkins", force: true do |t|
+    t.date    "date"
+    t.integer "n_steps"
+    t.integer "modified_timestamp", limit: 8
+  end
 
 end
