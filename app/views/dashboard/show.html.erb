@@ -6,13 +6,16 @@
 </div>
 
 <script type="text/javascript">
-  window.gymVisits = window.gon.gymVisits.map(function(e){
-    return new Date(Date.parse(e));
+  var gymVisits = window.gon.gymVisits.map(function(e){
+    var rawDate = new Date(e);
+    var fixedDate = new Date(rawDate.getUTCFullYear(), rawDate.getUTCMonth(), rawDate.getUTCDate());
+    return fixedDate;
   });
 
   var cal = new CalHeatMap();
   cal.init({
     itemSelector: "#fitness-calendar",
+    itemName: ["step", "steps"],
     domain: "month",
     subDomain: "x_day",
     data: window.gon.stepsCheckins,

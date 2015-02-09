@@ -9,7 +9,9 @@ class DashboardController < ApplicationController
   def format_steps_checkins
     checkins = {}
     StepsCheckin.all.each do |checkin|
-      checkins["#{checkin.date.to_datetime.to_i}"] = checkin.n_steps
+      datetime = checkin.date.to_datetime + 5.hours #EST
+      timestamp = datetime.to_i.to_s
+      checkins[timestamp] = checkin.n_steps
     end
 
     checkins
